@@ -1,12 +1,7 @@
 package com.dkraus.application.odata.entity.car;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.net.URI;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,17 +19,27 @@ import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.api.uri.KeyPredicate;
 import org.apache.olingo.odata2.api.uri.info.GetEntitySetUriInfo;
 import org.apache.olingo.odata2.api.uri.info.GetEntityUriInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dkraus.application.database.entities.Car;
+import com.dkraus.application.database.service.CarBusinessService;
 import com.dkraus.application.odata.service.interfaces.ODataResponseConverter;
 import com.dkraus.application.odata.service.interfaces.OdataProvider;
 
 @Service
-public class CarProvider extends OdataProvider implements ODataResponseConverter<Car> {
+public class ODataCarProvider extends OdataProvider implements ODataResponseConverter<Car> {
+
+	private final CarBusinessService carService;
+
+	@Autowired
+	public ODataCarProvider(CarBusinessService carService) {
+		this.carService = carService;
+	}
 
 	@Override
 	public String getName() {
-		return "CarSet";
+		return "ODataCarSet";
 	}
 
 	@Override
@@ -45,8 +50,8 @@ public class CarProvider extends OdataProvider implements ODataResponseConverter
 		ODataEntityProviderPropertiesBuilder builder = EntityProviderWriteProperties.serviceRoot(serviceRoot);
 		EntityProviderWriteProperties properties = builder.build();
 
-		return EntityProvider.writeFeed(contentType, entitySet,
-				convertToODataResponse(Arrays.asList(createCar(1L), createCar(2L))), properties);
+		return EntityProvider.writeFeed(contentType, entitySet, convertToODataResponse(carService.findAll()),
+				properties);
 	}
 
 	@Override
@@ -56,14 +61,14 @@ public class CarProvider extends OdataProvider implements ODataResponseConverter
 		if (uriInfo.getNavigationSegments().isEmpty()) {
 
 			int id = getKeyValue(uriInfo.getKeyPredicates().get(0));
-			List<Map<String, Object>> data = convertToODataResponse(Arrays.asList(createCar(id)));
+			Map<String, Object> data = convertToODataResponse(carService.findById(id));
 
-			if (data != null && data.size() == 1) {
+			if (data != null) {
 				URI serviceRoot = getContext().getPathInfo().getServiceRoot();
 				ODataEntityProviderPropertiesBuilder propertiesBuilder = EntityProviderWriteProperties
 						.serviceRoot(serviceRoot);
 
-				return EntityProvider.writeEntry(contentType, entitySet, data.get(0), propertiesBuilder.build());
+				return EntityProvider.writeEntry(contentType, entitySet, data, propertiesBuilder.build());
 			}
 		}
 
@@ -82,40 +87,28 @@ public class CarProvider extends OdataProvider implements ODataResponseConverter
 		List<Map<String, Object>> oDataContent = new ArrayList<>();
 
 		for (Car car : objectsToConvert) {
-			Map<String, Object> data = new HashMap<>();
-
-			data.put("Id", car.getId());
-			data.put("Type", car.getType());
-			data.put("BigDecimal", car.getBigDecimal());
-			data.put("BigInteger", car.getBigInteger());
-			data.put("Timestamp", car.getTimestamp());
-			data.put("LongObject", car.getLongObject());
-			data.put("Longe", car.getLonge());
-			data.put("IntObject", car.getIntObject());
-			data.put("Inte", car.getInte());
-			data.put("BoolObject", car.getBoolObject());
-			data.put("BoolE", car.getBoolE());
-
-			oDataContent.add(data);
+			oDataContent.add(convertToODataResponse(car));
 		}
 
 		return oDataContent;
 	}
 
-	private Car createCar(long id) {
-		Car car = new Car();
-		car.setId(id);
-		car.setType("Type" + id);
-		car.setBigDecimal(BigDecimal.ONE);
-		car.setBigInteger(BigInteger.ONE);
-		car.setBoolE(false);
-		car.setBoolObject(Boolean.TRUE);
-		car.setTimestamp(Timestamp.from(Instant.now()));
-		car.setLongObject(Long.valueOf(1L));
-		car.setLongObject(2L);
-		car.setInte(3);
-		car.setIntObject(Integer.valueOf(4));
 
-		return car;
+	public Map<String, Object> convertToODataResponse(Car car) {
+
+		Map<String, Object> data = new HashMap<>();
+
+		data.put("Id", car.getId());
+		data.put("Type", car.getType());
+		data.put("BigDecimal", null);
+		data.put("BigInteger", null);
+		data.put("Timestamp", null);
+		data.put("LongObject", null);
+		data.put("Longe", null);
+		data.put("IntObject", null);
+		data.put("Inte", null);
+		data.put("BoolE", car.isUsed());
+
+		return data;
 	}
 }

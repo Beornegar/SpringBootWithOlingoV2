@@ -7,6 +7,7 @@ import java.util.Objects;
 
 import org.apache.olingo.odata2.api.annotation.edm.EdmEntitySet;
 import org.apache.olingo.odata2.api.annotation.edm.EdmEntityType;
+import org.apache.olingo.odata2.api.annotation.edm.EdmFacets;
 import org.apache.olingo.odata2.api.annotation.edm.EdmKey;
 import org.apache.olingo.odata2.api.annotation.edm.EdmProperty;
 
@@ -14,7 +15,7 @@ import com.dkraus.application.odata.annotation.Sap;
 
 @EdmEntityType
 @EdmEntitySet
-public class Car {
+public class ODataCar {
 
 	@EdmKey
 	@EdmProperty
@@ -51,10 +52,10 @@ public class Car {
 	@EdmProperty
 	private boolean boolE;
 
-	public Car() {
+	public ODataCar() {
 	}
 
-	public Car(long id, String type, BigDecimal bigDecimal, BigInteger bigInteger, Timestamp timestamp, Long longObject,
+	public ODataCar(long id, String type, BigDecimal bigDecimal, BigInteger bigInteger, Timestamp timestamp, Long longObject,
 			long longe, Integer intObject, int inte, Boolean boolObject, boolean boolE) {
 		this.id = id;
 		this.type = type;
@@ -169,10 +170,10 @@ public class Car {
 	public boolean equals(Object o) {
 		if (o == this)
 			return true;
-		if (!(o instanceof Car)) {
+		if (!(o instanceof ODataCar)) {
 			return false;
 		}
-		Car car = (Car) o;
+		ODataCar car = (ODataCar) o;
 		return id == car.id && Objects.equals(type, car.type) && Objects.equals(bigDecimal, car.bigDecimal)
 				&& Objects.equals(bigInteger, car.bigInteger) && Objects.equals(longObject, car.longObject)
 				&& longe == car.longe && Objects.equals(intObject, car.intObject) && inte == car.inte
