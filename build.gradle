@@ -1,0 +1,43 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.0'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.dkraus'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-jersey'
+	
+	implementation 'org.apache.olingo:olingo-odata2-annotation-processor-core:2.0.11'
+	implementation 'org.apache.olingo:olingo-odata2-annotation-processor-api:2.0.11'
+
+	implementation 'org.apache.olingo:olingo-odata2-api:2.0.11'
+	implementation 'org.apache.olingo:olingo-odata2-core:2.0.11'
+
+	implementation 'org.apache.commons:commons-lang3:3.0'
+
+	implementation ('javax.ws.rs:javax.ws.rs-api:2.1.1') {
+		force = true
+	}
+/*
+    implementation ('javax.servlet:javax.servlet-api:4.0.1') {
+		force = true
+	}
+	implementation 'org.apache.cxf:cxf-rt-frontend-jaxrs:3.4.4'
+	*/
+	
+	runtimeOnly 'com.h2database:h2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
