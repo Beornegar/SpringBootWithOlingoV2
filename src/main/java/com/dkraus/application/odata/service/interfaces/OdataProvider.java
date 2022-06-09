@@ -1,4 +1,4 @@
-package com.dkraus.odata.annotations.odata.odata;
+package com.dkraus.application.odata.service.interfaces;
 
 import org.apache.olingo.odata2.api.edm.EdmEntitySet;
 import org.apache.olingo.odata2.api.exception.ODataException;

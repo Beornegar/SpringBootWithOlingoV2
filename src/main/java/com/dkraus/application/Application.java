@@ -1,4 +1,4 @@
-package com.dkraus.odata.annotations;
+package com.dkraus.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

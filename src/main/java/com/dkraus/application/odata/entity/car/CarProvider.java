@@ -1,4 +1,4 @@
-package com.dkraus.odata.annotations.odata.entity.car;
+package com.dkraus.application.odata.entity.car;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -26,8 +26,8 @@ import org.apache.olingo.odata2.api.uri.info.GetEntitySetUriInfo;
 import org.apache.olingo.odata2.api.uri.info.GetEntityUriInfo;
 import org.springframework.stereotype.Service;
 
-import com.dkraus.odata.annotations.odata.odata.ODataResponseConverter;
-import com.dkraus.odata.annotations.odata.odata.OdataProvider;
+import com.dkraus.application.odata.service.interfaces.ODataResponseConverter;
+import com.dkraus.application.odata.service.interfaces.OdataProvider;
 
 @Service
 public class CarProvider extends OdataProvider implements ODataResponseConverter<Car> {

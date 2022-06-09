@@ -1,4 +1,4 @@
-package com.dkraus.odata.annotations.odata.odata;
+package com.dkraus.application.odata.service.interfaces;
 
 import java.util.List;
 import java.util.Map;

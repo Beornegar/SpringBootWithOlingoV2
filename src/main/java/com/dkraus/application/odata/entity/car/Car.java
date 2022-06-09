@@ -1,4 +1,4 @@
-package com.dkraus.odata.annotations.odata.entity.car;
+package com.dkraus.application.odata.entity.car;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -10,7 +10,7 @@ import org.apache.olingo.odata2.api.annotation.edm.EdmEntityType;
 import org.apache.olingo.odata2.api.annotation.edm.EdmKey;
 import org.apache.olingo.odata2.api.annotation.edm.EdmProperty;
 
-import com.dkraus.odata.annotations.odata.annotations.Sap;
+import com.dkraus.application.odata.annotation.Sap;
 
 @EdmEntityType
 @EdmEntitySet

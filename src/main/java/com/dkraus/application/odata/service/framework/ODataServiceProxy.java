@@ -1,4 +1,4 @@
-package com.dkraus.odata.annotations.odata.odata;
+package com.dkraus.application.odata.service.framework;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +14,8 @@ import org.apache.olingo.odata2.api.processor.ODataResponse;
 import org.apache.olingo.odata2.api.processor.ODataSingleProcessor;
 import org.apache.olingo.odata2.api.uri.info.GetEntitySetUriInfo;
 import org.apache.olingo.odata2.api.uri.info.GetEntityUriInfo;
+
+import com.dkraus.application.odata.service.interfaces.OdataProvider;
 
 public class ODataServiceProxy extends ODataSingleProcessor {
 

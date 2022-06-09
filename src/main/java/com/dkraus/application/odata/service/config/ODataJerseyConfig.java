@@ -1,4 +1,4 @@
-package com.dkraus.odata.annotations.odata.odata;
+package com.dkraus.application.odata.service.config;
 
 import javax.inject.Inject;
 import javax.ws.rs.ApplicationPath;
@@ -9,6 +9,8 @@ import org.apache.olingo.odata2.core.rest.ODataRootLocator;
 import org.apache.olingo.odata2.core.rest.app.ODataApplication;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
+
+import com.dkraus.application.odata.service.CustomODataServiceFactory;
 
 @Component
 @ApplicationPath("/odata2/")

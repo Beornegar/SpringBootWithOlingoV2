@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  ******************************************************************************/
-package com.dkraus.odata.annotations.odata.odata;
+package com.dkraus.application.odata.service.framework;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -76,7 +76,7 @@ import org.apache.olingo.odata2.api.edm.provider.SimpleProperty;
 import org.apache.olingo.odata2.api.edm.provider.Using;
 import org.apache.olingo.odata2.api.exception.ODataException;
 
-import com.dkraus.odata.annotations.odata.annotations.Sap;
+import com.dkraus.application.odata.annotation.Sap;
 
 /**
  * Provider for the entity data model used in the reference scenario Adds the

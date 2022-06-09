@@ -1,4 +1,4 @@
-package com.dkraus.odata.annotations.odata.annotations;
+package com.dkraus.application.odata.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
