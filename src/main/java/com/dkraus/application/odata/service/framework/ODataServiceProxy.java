@@ -19,11 +19,11 @@ import com.dkraus.application.odata.service.interfaces.OdataProvider;
 
 public class ODataServiceProxy extends ODataSingleProcessor {
 
-	private final Map<String, OdataProvider> odataProvider = new HashMap<>();
+	private final Map<String, OdataProvider<?>> odataProvider = new HashMap<>();
 
-	public ODataServiceProxy(final ODataContext odataContext, List<OdataProvider> providers) {
+	public ODataServiceProxy(final ODataContext odataContext, List<OdataProvider<?>> providers) {
 
-		for(OdataProvider provider : providers) {
+		for(OdataProvider<?> provider : providers) {
 			provider.setContext(odataContext);
 			odataProvider.put(provider.getName(), provider);
 		}

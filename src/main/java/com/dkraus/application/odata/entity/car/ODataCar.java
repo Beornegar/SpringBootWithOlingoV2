@@ -7,15 +7,15 @@ import java.util.Objects;
 
 import org.apache.olingo.odata2.api.annotation.edm.EdmEntitySet;
 import org.apache.olingo.odata2.api.annotation.edm.EdmEntityType;
-import org.apache.olingo.odata2.api.annotation.edm.EdmFacets;
 import org.apache.olingo.odata2.api.annotation.edm.EdmKey;
 import org.apache.olingo.odata2.api.annotation.edm.EdmProperty;
 
 import com.dkraus.application.odata.annotation.Sap;
+import com.dkraus.application.odata.service.interfaces.ODataEntity;
 
 @EdmEntityType
 @EdmEntitySet
-public class ODataCar {
+public class ODataCar implements ODataEntity {
 
 	@EdmKey
 	@EdmProperty

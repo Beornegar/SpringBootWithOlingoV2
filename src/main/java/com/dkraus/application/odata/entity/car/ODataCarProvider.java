@@ -28,7 +28,7 @@ import com.dkraus.application.odata.service.interfaces.ODataResponseConverter;
 import com.dkraus.application.odata.service.interfaces.OdataProvider;
 
 @Service
-public class ODataCarProvider extends OdataProvider implements ODataResponseConverter<Car> {
+public class ODataCarProvider extends OdataProvider<ODataCar> implements ODataResponseConverter<Car> {
 
 	private final CarBusinessService carService;
 
@@ -37,10 +37,10 @@ public class ODataCarProvider extends OdataProvider implements ODataResponseConv
 		this.carService = carService;
 	}
 
-	@Override
-	public String getName() {
-		return "ODataCarSet";
-	}
+//	@Override
+//	public String getName() {
+//		return "ODataCarSet";
+//	}
 
 	@Override
 	public ODataResponse readEntitySet(GetEntitySetUriInfo uriInfo, String contentType, EdmEntitySet entitySet)
