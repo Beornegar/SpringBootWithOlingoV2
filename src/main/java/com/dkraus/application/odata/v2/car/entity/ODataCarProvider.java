@@ -1,4 +1,4 @@
-package com.dkraus.application.odata.entity.car;
+package com.dkraus.application.odata.v2.car.entity;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -24,8 +24,8 @@ import org.springframework.stereotype.Service;
 
 import com.dkraus.application.database.entities.Car;
 import com.dkraus.application.database.service.CarBusinessService;
-import com.dkraus.application.odata.service.interfaces.ODataResponseConverter;
-import com.dkraus.application.odata.service.interfaces.OdataProvider;
+import com.dkraus.application.odata.v2.interfaces.ODataResponseConverter;
+import com.dkraus.application.odata.v2.interfaces.OdataProvider;
 
 @Service
 public class ODataCarProvider extends OdataProvider<ODataCar> implements ODataResponseConverter<Car> {
@@ -36,11 +36,6 @@ public class ODataCarProvider extends OdataProvider<ODataCar> implements ODataRe
 	public ODataCarProvider(CarBusinessService carService) {
 		this.carService = carService;
 	}
-
-//	@Override
-//	public String getName() {
-//		return "ODataCarSet";
-//	}
 
 	@Override
 	public ODataResponse readEntitySet(GetEntitySetUriInfo uriInfo, String contentType, EdmEntitySet entitySet)

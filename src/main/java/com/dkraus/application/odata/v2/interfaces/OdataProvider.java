@@ -1,4 +1,4 @@
-package com.dkraus.application.odata.service.interfaces;
+package com.dkraus.application.odata.v2.interfaces;
 
 import java.lang.reflect.ParameterizedType;
 

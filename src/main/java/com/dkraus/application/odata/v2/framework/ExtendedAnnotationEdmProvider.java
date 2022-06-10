@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  ******************************************************************************/
-package com.dkraus.application.odata.service.framework;
+package com.dkraus.application.odata.v2.framework;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -76,8 +76,6 @@ import org.apache.olingo.odata2.api.edm.provider.SimpleProperty;
 import org.apache.olingo.odata2.api.edm.provider.Using;
 import org.apache.olingo.odata2.api.exception.ODataException;
 
-import com.dkraus.application.odata.annotation.Sap;
-
 /**
  * Provider for the entity data model used in the reference scenario Adds the
  * interpretation of the custom annotation "SAP" to the entities.
@@ -123,6 +121,10 @@ public class ExtendedAnnotationEdmProvider extends EdmProvider {
 		}
 
 		finish();
+	}
+	
+	public List<Class<?>> getAnnotatedClasses() {
+		return annotatedClasses;
 	}
 
 	@Override
