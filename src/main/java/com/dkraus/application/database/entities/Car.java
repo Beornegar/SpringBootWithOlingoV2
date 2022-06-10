@@ -8,17 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
-public class Car {
+@Table(name= "CAR")
+public class Car implements DatabaseEntity {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	protected long id;
 	
 	private String type;
-	
+
 	private boolean used;
 
+	
 	public long getId() {
 		return id;
 	}
@@ -66,7 +67,5 @@ public class Car {
 		builder.append("Car [id=").append(id).append(", type=").append(type).append(", used=").append(used).append("]");
 		return builder.toString();
 	}
-	
-	
-	
+
 }

@@ -60,7 +60,7 @@ public class ODataCarProvider extends OdataProvider<ODataCar> implements ODataRe
 
 		if (uriInfo.getNavigationSegments().isEmpty()) {
 
-			int id = getKeyValue(uriInfo.getKeyPredicates().get(0));
+			int id = getIntegerKeyValue(uriInfo.getKeyPredicates().get(0));
 			Map<String, Object> data = convertToODataResponse(carService.findById(id));
 
 			if (data != null) {
@@ -75,12 +75,6 @@ public class ODataCarProvider extends OdataProvider<ODataCar> implements ODataRe
 		throw new ODataNotImplementedException();
 	}
 
-	private int getKeyValue(KeyPredicate key) throws ODataException {
-		EdmProperty property = key.getProperty();
-		EdmSimpleType type = (EdmSimpleType) property.getType();
-		return type.valueOfString(key.getLiteral(), EdmLiteralKind.DEFAULT, property.getFacets(), Integer.class);
-	}
-
 	@Override
 	public List<Map<String, Object>> convertToODataResponse(List<Car> objectsToConvert) {
 
@@ -93,7 +87,7 @@ public class ODataCarProvider extends OdataProvider<ODataCar> implements ODataRe
 		return oDataContent;
 	}
 
-
+	@Override
 	public Map<String, Object> convertToODataResponse(Car car) {
 
 		Map<String, Object> data = new HashMap<>();
